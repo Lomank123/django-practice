@@ -73,12 +73,24 @@ WSGI_APPLICATION = 'main.wsgi.application'
 
 # Database
 
+# Postgres
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'HOST': os.environ.get('DB_HOST', 'localhost'),
+        'NAME': os.environ.get('DB_NAME', 'django-practice-db'),
+        'USER': os.environ.get('DB_USER', 'default-user'),
+        'PASSWORD': os.environ.get('DB_PASS', '12345'),
     }
 }
+
+# SQLite3
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': BASE_DIR / 'db.sqlite3',
+#    }
+#}
 
 
 # Password validation

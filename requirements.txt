@@ -8,3 +8,4 @@ django-filter
 django-cors-headers
 django-cleanup
 python-dotenv
+psycopg2
