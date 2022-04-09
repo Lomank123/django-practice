@@ -7,3 +7,4 @@ flake8
 django-filter
 django-cors-headers
 django-cleanup
+python-dotenv
