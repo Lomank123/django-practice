@@ -1,0 +1,9 @@
+Django
+django-debug-toolbar
+django-extensions
+djangorestframework
+requests
+flake8
+django-filter
+django-cors-headers
+django-cleanup
