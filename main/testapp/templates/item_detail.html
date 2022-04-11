@@ -1,0 +1,20 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}Item detail{% endblock title %}
+
+{% block content %}
+  <h3>Item detail</h3>
+
+  <h4>Item:</h4>
+  <ul>
+    <li>
+      {{ item.name }}
+      <i>{{ item.category.name }}</i>
+      {% for tag in item.tag.all %}
+        <b>{{ tag.name }}</b>
+      {% endfor %}
+    </li>
+  </ul>
+
+
+{% endblock content %}

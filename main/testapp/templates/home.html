@@ -4,4 +4,19 @@
 
 {% block content %}
   <h3>Home page</h3>
+
+  <h4>Items:</h4>
+  <ul>
+    {% for item in items %}
+      <li>
+        {{ item.name }}
+        <b>{{ item.category.name }}</b>
+        {% for tag in item.tag.all %}
+          <b>{{ tag.name }}</b>
+        {% endfor %}
+      </li>
+    {% endfor %}
+  </ul>
+
+
 {% endblock content %}
