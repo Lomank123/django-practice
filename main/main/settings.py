@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'django_extensions',
     'mptt',
+    'django_seed',
     'testapp',
 ]
 

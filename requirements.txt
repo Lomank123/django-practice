@@ -10,3 +10,4 @@ django-cleanup
 python-dotenv
 psycopg2
 django-mptt
+django-seed

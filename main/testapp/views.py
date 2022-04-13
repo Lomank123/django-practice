@@ -6,12 +6,17 @@ from testapp.models import Category, Tag, Item, Comment, Employee
 from django.shortcuts import get_object_or_404
 from datetime import timedelta
 from django.utils import timezone
+from django_seed import Seed
+
+
+seeder = Seed.seeder()
 
 
 class HomeView(TemplateView):
     template_name = 'home.html'
     
     def get_context_data(self, **kwargs):
+        #self.create_employees()
         context = super().get_context_data(**kwargs)
         items = (
             Item.objects
@@ -28,7 +33,18 @@ class HomeView(TemplateView):
         context["tags"] = tags
         context["employees"] = employees
         #context["recent_comment_items"] = self.get_recent_comment_items()
+
         return context
+
+    def create_employees(self):
+        #Bosses
+        for i in range(2):
+            boss = Employee.objects.create(name="boss123", position="boss")
+            e1 = Employee.objects.create(name="1empl", position="1empl", parent_id=boss.id)
+            e2 = Employee.objects.create(name="2empl", position="2empl", parent_id=e1.id)
+            e3 = Employee.objects.create(name="3empl", position="3empl", parent_id=e2.id)
+            e4 = Employee.objects.create(name="4empl", position="4empl", parent_id=e3.id)
+
 
     def get_item_queries(self):
         pass

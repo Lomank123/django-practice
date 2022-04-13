@@ -63,4 +63,4 @@ class Employee(MPTTModel):
     position = models.CharField(max_length=120, verbose_name='Position')
 
     class MPTTMeta:
-        order_instertion_by = ['name']
+        order_instertion_by = ['id']
