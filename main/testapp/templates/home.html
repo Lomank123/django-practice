@@ -1,22 +1,76 @@
 {% extends 'layout/base.html' %}
+{% load mptt_tags %}
 
 {% block title %}Home page{% endblock title %}
 
 {% block content %}
-  <h3>Home page</h3>
+  <h1>Home page</h1>
+  <hr />
+  <h2>Main objects</h2>
+  <hr />
+
+  <h4>Categories</h4>
+  <div>
+    <ul>
+      {% for category in categories %}
+        <li><b>{{ category.name }}</b></li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <h4>Tags</h4>
+  <div>
+    <ul>
+      {% for tag in tags %}
+        <li><b>{{ tag.name }}</b></li>
+      {% endfor %}
+    </ul>
+  </div>
 
   <h4>Items:</h4>
-  <ul>
-    {% for item in items %}
-      <li>
-        {{ item.name }}
-        <b>{{ item.category.name }}</b>
-        {% for tag in item.tag.all %}
-          <b>{{ tag.name }}</b>
-        {% endfor %}
-      </li>
-    {% endfor %}
-  </ul>
+  <div>
+    <ul>
+      {% for item in items %}
+        <li>
+          <p>Name: {{ item.name }}</p>
+          <p>Category: <i>{{ item.category.name }}</i></p>
 
+          <p> Tags:
+            {% for tag in item.tag.all %}
+              | <b>{{ tag.name }}</b> |
+            {% endfor %}
+          </p>
+
+          <p>Comments:
+            {% for comment in item.comment_set.all %}
+              <span>{{ comment.text }}</span>
+            {% endfor %}
+          </p>
+          <p>Published in: {{ item.publication_date }}</p>
+          <p>Last update: {{ item.update_date }}</p>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <h2>Queries</h2>
+  <hr />
+
+  <h4>Employees</h4>
+  <div>
+    <ul>
+        {% recursetree employees %}
+            <li>
+                {{ node.id }}
+                {{ node.name }}
+                {% if not node.is_leaf_node %}
+                    <ul class="people">
+                        {{ children }}
+                    </ul>
+                {% endif %}
+            </li>
+        {% endrecursetree %}
+    </ul>
+  </div>
 
 {% endblock content %}
