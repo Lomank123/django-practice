@@ -50,6 +50,9 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
+
+    # Custom middleware
+    'main.middleware.custom.LogTimeTakenMiddleware',
 ]
 
 ROOT_URLCONF = 'main.urls'
@@ -85,15 +88,6 @@ DATABASES = {
         'PASSWORD': os.environ.get('DB_PASS', '12345'),
     }
 }
-
-# SQLite3
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': BASE_DIR / 'db.sqlite3',
-#    }
-#}
-
 
 # Password validation
 
@@ -144,8 +138,10 @@ INTERNAL_IPS = [
     '127.0.0.1',
 ]
 
+
 def show_toolbar(request):
     return True
+
 
 SHOW_TOOLBAR_CALLBACK = show_toolbar
 

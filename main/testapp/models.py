@@ -1,7 +1,6 @@
 from django.db import models
 from mptt.models import MPTTModel, TreeForeignKey
 from django.contrib.auth.models import User
-from datetime import datetime
 
 
 class Category(models.Model):
@@ -35,7 +34,6 @@ class Item(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name="Category")
     tag = models.ManyToManyField(Tag, verbose_name="Tag")
 
-
     def __str__(self):
         return self.name
 
@@ -58,7 +56,14 @@ class Comment(models.Model):
 
 
 class Employee(MPTTModel):
-    parent = TreeForeignKey('self', on_delete=models.CASCADE, blank=True, null=True, related_name='people', verbose_name='Boss')
+    parent = TreeForeignKey(
+        'self',
+        on_delete=models.CASCADE,
+        blank=True,
+        null=True,
+        related_name='people',
+        verbose_name='Boss'
+    )
     name = models.CharField(max_length=120, verbose_name='Name')
     position = models.CharField(max_length=120, verbose_name='Position')
 
