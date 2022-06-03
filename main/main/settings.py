@@ -51,7 +51,11 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 
-    # Custom middleware
+    # Custom middlewares
+    # SetUserAgentMiddleware should always go before BlockMobileMiddleware
+    'main.middleware.custom.SetUserAgentMiddleware',
+    'main.middleware.custom.BlockMobileMiddleware',
+    'main.middleware.custom.CountRequestsMiddleware',
     'main.middleware.custom.LogTimeTakenMiddleware',
 ]
 
