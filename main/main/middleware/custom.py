@@ -1,6 +1,11 @@
+import logging
+
 from django.http import HttpResponse
 from django.utils import timezone
 from user_agents import parse
+
+
+logger = logging.getLogger(__name__)
 
 
 class LogTimeTakenMiddleware(object):
@@ -22,7 +27,7 @@ class LogTimeTakenMiddleware(object):
         # Code to be executed for each request/response after
         # the view is called.
         total_time = timezone.now() - start_time
-        print(f"Time taken: {total_time.total_seconds()} seconds")
+        logger.info(f"Time taken: {total_time.total_seconds()} seconds")
         return response
 
     def process_exception(self, request, exception):
@@ -44,12 +49,12 @@ class CountRequestsMiddleware(object):
     def __call__(self, request):
         self.requests_count += 1
         response = self.get_response(request)
-        print(f"Handled {self.requests_count} requests so far")
+        logger.info(f"Handled {self.requests_count} requests so far")
         return response
 
     def process_exception(self, request, exception):
         self.exceptions_count += 1
-        print(f"Encountered {self.exceptions_count} exceptions so far")
+        logger.info(f"Encountered {self.exceptions_count} exceptions so far")
 
 
 class SetUserAgentMiddleware(object):
