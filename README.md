@@ -14,6 +14,7 @@ The goal is to practice remained django features which never been used before. M
     - [Signals](#signals)
     - [Sessions](#sessions)
     - [Multiple apps](#multiple-apps)
+    - [Cache](#cache)
     - [Complex database queries](#complex-database-queries)
     - [Localization](#localization)
     - [Timezone](#timezone)
@@ -52,6 +53,11 @@ In result all output is written to log file. Middleware's logs can be also seen 
 
 ### Context processors
 
+Here you can find 1 custom context processor:
+- `item_count` - Simply returns count of `Item` objects.
+
+As a result you can access `all_items_count` in templates.
+
 
 ### Signals
 
@@ -60,6 +66,9 @@ In result all output is written to log file. Middleware's logs can be also seen 
 
 
 ### Multiple apps
+
+
+### Cache
 
 
 ### Complex database queries
