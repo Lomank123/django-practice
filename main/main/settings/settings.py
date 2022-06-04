@@ -3,7 +3,6 @@ from pathlib import Path
 from dotenv import load_dotenv
 
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # This will load .env file variables
@@ -37,7 +36,6 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'django_extensions',
     'mptt',
-    'django_seed',
     'testapp',
 ]
 
@@ -80,19 +78,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'main.wsgi.application'
 
 
-# Database
-
-# Postgres
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'HOST': os.environ.get('DB_HOST', 'localhost'),
-        'NAME': os.environ.get('DB_NAME', 'django-practice-db'),
-        'USER': os.environ.get('DB_USER', 'default-user'),
-        'PASSWORD': os.environ.get('DB_PASS', '12345'),
-    }
-}
-
 # Password validation
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -110,7 +95,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 
 LANGUAGE_CODE = 'en-us'
@@ -120,17 +104,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
-
-# Static files (CSS, JavaScript, Images)
-
-STATIC_URL = 'static/'
-STATIC_ROOT = './static/'
-
-# Media files
-
-MEDIA_URL = 'media/'
-MEDIA_ROOT = '/media/'
 
 # Default primary key field type
 
@@ -152,60 +125,3 @@ SHOW_TOOLBAR_CALLBACK = show_toolbar
 if DEBUG:
     import mimetypes
     mimetypes.add_type("application/javascript", ".js", True)
-
-
-# Logging
-
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': True,
-    'filters': {
-        'require_debug_true': {
-            '()': 'django.utils.log.RequireDebugTrue',
-        },
-    },
-    'formatters': {
-        'verbose': {
-            'format': '{levelname} {asctime} {module} {process:d} {thread:d} {message}',
-            'style': '{',
-        },
-        'simple': {
-            'format': '{levelname} {message}',
-            'style': '{',
-        },
-    },
-    'handlers': {
-        'console': {
-            'level': 'INFO',
-            'filters': ['require_debug_true'],
-            'class': 'logging.StreamHandler',
-            'formatter': 'simple',
-        },
-        'file': {
-            'level': 'INFO',
-            'class': 'logging.handlers.RotatingFileHandler',
-            'filename': './main/logs/debug.log',
-            'maxBytes': 1048576,
-            'backupCount': 10,
-            'formatter': 'verbose',
-        },
-    },
-    'loggers': {
-        'django': {
-            'handlers': ['file'],
-            'level': 'INFO',
-        },
-        'main.middleware': {
-            'handlers': ['file'],
-            'level': 'INFO',
-        },
-        # 'propagate': True means that message will also be handled by main.middleware logger,
-        # so here we write both to the console and to debug.log file.
-        # If you set it to False then there'll be no messages about custom middlewares in log files
-        'main.middleware.custom': {
-            'handlers': ['console'],
-            'level': 'INFO',
-            'propagate': True,
-        }
-    },
-}

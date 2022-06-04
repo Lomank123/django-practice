@@ -26,14 +26,28 @@ In the future here may be also DRF stuff.
 
 ## Installation
 
+Describe installation process here.
+
 
 ## Features
 
 
 ### Middleware
 
+There are 4 custom middlewares:
+- `LogTimeTakenMiddleware` - Calculates and logs total time taken for the response to get.
+- `CountRequestsMiddleware` - Counts number of requests and exceptions.
+- `SetUserAgentMiddleware` - Adds attr to the request with meaningful info about user agent.
+- `BlockMobileMiddleware` - Blocks all incoming requests if they are from mobile browsers. Depends on `SetUserAgentMiddleware`.
 
 ### Logging
+
+There are 3 custom loggers:
+- `django` - Overriden default logger
+- `main.middleware` - For custom middleware's file output
+- `main.middleware.custom` - For custom middleware's console output with `propagate = True`
+
+In result all output is written to log file. Middlewares logs can be also seen in the console.
 
 
 ### Context processors
@@ -58,9 +72,12 @@ In the future here may be also DRF stuff.
 
 
 ## Tests
+All custom classes and methods have been covered with tests.
 
 
 ## Fixtures
+
+Describe fixtures content and installation process here.
 
 
 ## Author
