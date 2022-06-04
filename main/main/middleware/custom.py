@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 
 class LogTimeTakenMiddleware(object):
     """
-    Calculates total time taken for the response to get.
+    Calculates and logs total time taken for the response to get.
     """
 
     def __init__(self, get_response):
