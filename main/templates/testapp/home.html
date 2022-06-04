@@ -46,8 +46,8 @@
               <span>{{ comment.text }}</span>
             {% endfor %}
           </p>
-          <p>Published in: {{ item.publication_date }}</p>
-          <p>Last update: {{ item.update_date }}</p>
+          <p>Published in: {{ item.creation_date }}</p>
+          <p>Last update: {{ item.last_update }}</p>
         </li>
       {% endfor %}
     </ul>
@@ -55,22 +55,5 @@
 
   <h2>Queries</h2>
   <hr />
-
-  <h4>Employees</h4>
-  <div>
-    <ul>
-        {% recursetree employees %}
-            <li>
-                {{ node.id }}
-                {{ node.name }}
-                {% if not node.is_leaf_node %}
-                    <ul class="people">
-                        {{ children }}
-                    </ul>
-                {% endif %}
-            </li>
-        {% endrecursetree %}
-    </ul>
-  </div>
 
 {% endblock content %}

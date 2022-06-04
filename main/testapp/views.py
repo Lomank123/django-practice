@@ -5,7 +5,7 @@ from django.shortcuts import get_object_or_404
 from django.utils import timezone
 from django.views.generic.base import TemplateView
 
-from testapp.models import Category, Comment, Employee, Item, Tag
+from testapp.models import Category, Comment, Item, Tag
 
 
 class HomeView(TemplateView):
@@ -23,23 +23,11 @@ class HomeView(TemplateView):
         )
         categories = Category.objects.all()
         tags = Tag.objects.all()
-        employees = Employee.objects.all()
         context["items"] = items
         context["categories"] = categories
         context["tags"] = tags
-        context["employees"] = employees
         # context["recent_comment_items"] = self.get_recent_comment_items()
-
         return context
-
-    def create_employees(self):
-        # Bosses
-        for i in range(2):
-            boss = Employee.objects.create(name="boss123", position="boss")
-            e1 = Employee.objects.create(name="1empl", position="1empl", parent_id=boss.id)
-            e2 = Employee.objects.create(name="2empl", position="2empl", parent_id=e1.id)
-            e3 = Employee.objects.create(name="3empl", position="3empl", parent_id=e2.id)
-            Employee.objects.create(name="4empl", position="4empl", parent_id=e3.id)
 
     def get_item_queries(self):
         pass

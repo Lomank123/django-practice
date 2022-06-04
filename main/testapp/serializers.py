@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from testapp.models import Category, Tag, Item, Employee
+from testapp.models import Category, Tag, Item
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -20,11 +20,4 @@ class ItemSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Item
-        fields = '__all__'
-
-
-class SubEmployeeSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = Employee
         fields = '__all__'
