@@ -9,7 +9,7 @@ from testapp.models import Category, Comment, Employee, Item, Tag
 
 
 class HomeView(TemplateView):
-    template_name = 'home.html'
+    template_name = 'testapp/home.html'
 
     def get_context_data(self, **kwargs):
         # self.create_employees()
@@ -69,7 +69,7 @@ class HomeView(TemplateView):
 
 
 class ItemDetailView(TemplateView):
-    template_name = 'item_detail.html'
+    template_name = 'testapp/item_detail.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

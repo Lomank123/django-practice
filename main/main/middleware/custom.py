@@ -30,11 +30,6 @@ class LogTimeTakenMiddleware(object):
         logger.info(f"Time taken: {total_time.total_seconds()} seconds")
         return response
 
-    def process_exception(self, request, exception):
-        # If we return HttpResponse object here, other middlewares won't be called at all
-        # in case of exception
-        return HttpResponse("In LogTimeTakenMiddleware", status=400)
-
 
 class CountRequestsMiddleware(object):
     """

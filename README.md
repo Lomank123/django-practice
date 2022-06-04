@@ -47,7 +47,7 @@ There are 3 custom loggers:
 - `main.middleware` - For custom middleware's file output
 - `main.middleware.custom` - For custom middleware's console output with `propagate = True`
 
-In result all output is written to log file. Middlewares logs can be also seen in the console.
+In result all output is written to log file. Middleware's logs can be also seen in the console.
 
 
 ### Context processors
