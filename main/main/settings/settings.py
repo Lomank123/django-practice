@@ -20,6 +20,10 @@ ALLOWED_HOSTS.extend(
     )
 )
 
+# Authentication
+
+AUTH_USER_MODEL = 'accounts.CustomUser'
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -29,13 +33,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # 3rd party apps
     'rest_framework',
     'corsheaders',
     'django_cleanup',
     'django_filters',
     'debug_toolbar',
     'django_extensions',
-    'mptt',
+    # Our apps
+    'accounts',
     'testapp',
 ]
 
