@@ -115,11 +115,10 @@ As a result you can access `all_items_count` in templates.
 
 ### Multiple apps
 
-For now there's 2 apps other than `main`:
+There are 3 different apps other than `main`:
 - `testapp` - For learning purposes. Filled with different connected things like item, category and tag.
+- `blog` - It provides 2 models to use in any other app. Also it has no views.
 - `accounts` - For authentication. Describes auth process with it's custom user model.
-
-In near future 1 more will be added. Probably it will be `blog` or `products` app.
 
 
 ### Cache
