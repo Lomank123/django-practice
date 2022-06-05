@@ -9,7 +9,6 @@ urlpatterns = [
     path('__debug__/', include('debug_toolbar.urls')),
     path('', include('testapp.urls')),
     path('auth/', include('accounts.urls')),
-    path('blog/', include('blog.urls')),
 ]
 
 if settings.DEBUG:
