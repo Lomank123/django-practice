@@ -6,6 +6,7 @@ The goal is to practice remained django features which never been used before. M
 ## Table of contents
 - [django-practice](#django-practice)
   - [Table of contents](#table-of-contents)
+  - [Requirements](#requirements)
   - [Installation](#installation)
   - [Features](#features)
     - [Middleware](#middleware)
@@ -18,16 +19,63 @@ The goal is to practice remained django features which never been used before. M
     - [Complex database queries](#complex-database-queries)
     - [Localization](#localization)
     - [Timezone](#timezone)
-  - [Tests](#tests)
   - [Fixtures](#fixtures)
   - [Author](#author)
 
 In the future here may be also DRF stuff.
 
 
+## Requirements
+- Python (3.9.2 or newer) [link](https://www.python.org/downloads/)
+
+
 ## Installation
 
-Describe installation process here.
+- Clone repo:
+```
+git clone https://github.com/Lomank123/django-practice.git
+```
+
+- Copy the content of `.env.sample` to `.env` file inside project dir:
+```
+cd /path/to/project/django-practice
+cp .env.sample .env
+```
+
+- `venv` setup:
+```
+mkdir venv
+cd venv
+py -m venv ./venv
+```
+
+- Install requirements:
+```
+pip install -r requirements.txt
+```
+
+- Create Postgres db and user (credentials should be the same as in `.env` file)
+
+- Go to `/main` dir:
+```
+cd main
+```
+
+- Run migrations:
+```
+py manage.py makemigrations
+py manage.py migrate
+```
+
+- Create superuser:
+```
+py manage.py createsuperuser
+```
+
+- Run server:
+```
+py manage.py runserver
+```
 
 
 ## Features
@@ -67,6 +115,12 @@ As a result you can access `all_items_count` in templates.
 
 ### Multiple apps
 
+For now there's 2 apps other than `main`:
+- `testapp` - For learning purposes. Filled with different connected things like item, category and tag.
+- `accounts` - For authentication. Describes auth process with it's custom user model.
+
+In near future 1 more will be added. Probably it will be `blog` or `products` app.
+
 
 ### Cache
 
@@ -78,10 +132,6 @@ As a result you can access `all_items_count` in templates.
 
 
 ### Timezone
-
-
-## Tests
-All custom classes and methods have been covered with tests.
 
 
 ## Fixtures
