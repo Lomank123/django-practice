@@ -4,6 +4,12 @@
 
 {% block content %}
 
+<h3>Login</h3>
 
+<form method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input class="btn btn-primary" type="submit" value="Log in" />
+</form>
 
 {% endblock content %}
