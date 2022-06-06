@@ -18,7 +18,7 @@ class HomeView(TemplateView):
             Item.objects
             .all()
             .select_related('category')
-            .prefetch_related('tag', 'comment_set')
+            # .prefetch_related('tag', 'comment_set')
             # .values('name', 'category__name')
         )
         categories = Category.objects.all()

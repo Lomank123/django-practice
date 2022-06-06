@@ -1,0 +1,36 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}Blog detail{% endblock title %}
+
+{% block content %}
+
+<h4>Blog post #{{ post.id }}<h4>
+
+<p>{{ post.title }}</p>
+<p>{{ post.author }}</p>
+<p>{{ post.text }}</p>
+<p>{{ post.creation_date }}</p>
+
+<hr />
+
+<h5>Comments:</h5>
+<div>
+  {% for comment in comments %}
+    <p>{{ comment.user }}</p>
+    <p>{{ comment.post }}</p>
+    <p>{{ comment.text }}</p>
+  {% endfor %}
+</div>
+
+<hr />
+
+<h4>Leave a comment</h4>
+<form method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button class="btn btn-primary" type="submit">Submit</button>
+</form>
+
+<h5>You have visited this website {{ num_visits }} time{{ num_visits|pluralize }} during this session</h5>
+
+{% endblock content %}
