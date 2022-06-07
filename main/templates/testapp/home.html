@@ -1,8 +1,19 @@
 {% extends 'layout/base.html' %}
+{% load i18n %}
+{% load cache %}
 
 {% block title %}Home page{% endblock title %}
 
 {% block content %}
+
+{% get_current_language as LANGUAGE_CODE %}
+
+{% with expiration_time=600 %}
+  {% cache expiration_time welcome LANGUAGE_CODE %}
+    {% translate "Welcome to example.com" %}
+  {% endcache %}
+{% endwith %}
+
   <h1>Home page</h1>
   <hr />
   <h2>Main objects</h2>
