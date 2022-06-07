@@ -10,3 +10,5 @@ django-cleanup
 python-dotenv
 psycopg2
 user-agents
+redis
+hiredis
