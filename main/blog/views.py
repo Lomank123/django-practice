@@ -14,9 +14,10 @@ class BlogPostDetailView(FormView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         post = get_object_or_404(BlogPost.objects.select_related("author").all(), pk=self.kwargs["pk"])
-        context["num_visits"] = self.request.session.get('num_visits', 0)
         context["post"] = post
         context["comments"] = BlogComment.objects.filter(post_id=post.id).select_related("user", "post")
+        # Sessions example: number of times you have visited this page during the session
+        context["num_visits"] = self.request.session.get('num_visits', 0)
         return context
 
     def form_valid(self, form):
@@ -27,6 +28,7 @@ class BlogPostDetailView(FormView):
         return response
 
     def get(self, request, pk):
+        # Increment each time user visits this page
         num_visits = request.session.get('num_visits', 0)
         request.session['num_visits'] = num_visits + 1
         return super().get(request)

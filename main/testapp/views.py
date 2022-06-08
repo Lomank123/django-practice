@@ -1,10 +1,12 @@
 from datetime import timedelta
+import requests
 
 from django.db.models import Exists, OuterRef
 from django.shortcuts import get_object_or_404
 from django.utils import timezone
 from django.views.generic.base import TemplateView
 
+from testapp import consts
 from testapp.models import Category, Comment, Item, Tag
 
 
@@ -12,7 +14,6 @@ class HomeView(TemplateView):
     template_name = 'testapp/home.html'
 
     def get_context_data(self, **kwargs):
-        # self.create_employees()
         context = super().get_context_data(**kwargs)
         items = (
             Item.objects
@@ -27,6 +28,13 @@ class HomeView(TemplateView):
         context["categories"] = categories
         context["tags"] = tags
         # context["recent_comment_items"] = self.get_recent_comment_items()
+
+        # Cache example - Delayed request
+        # If you use cache then for the first time it'll take ~2 secs to get response.
+        # After refreshing the page it'll take just ~40ms because of cache.
+        request = requests.get(consts.DELAY_URL)
+        request.raise_for_status()
+        # print(request.json())
         return context
 
     def get_item_queries(self):

@@ -8,6 +8,8 @@
 
 {% get_current_language as LANGUAGE_CODE %}
 
+
+<!-- Cache example - caching result of method to get language code for 600 seconds -->
 {% with expiration_time=600 %}
   {% cache expiration_time welcome LANGUAGE_CODE %}
     {% translate "Welcome to example.com" %}
