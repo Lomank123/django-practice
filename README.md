@@ -1,6 +1,6 @@
 # django-practice
 
-The goal is to practice remained django features which never been used before. Most of custom implementations are covered with tests.
+The goal is to practice remained django features which never been used before.
 
 
 ## Table of contents
@@ -27,6 +27,7 @@ In the future here may be also DRF stuff.
 
 ## Requirements
 - Python (3.9.2 or newer) [link](https://www.python.org/downloads/)
+- Redis
 
 
 ## Installation
@@ -112,6 +113,11 @@ As a result you can access `all_items_count` in templates.
 
 ### Sessions
 
+For sessions I used `django.contrib.sessions.backends.cached_db` session engine (with the help of Redis).
+
+In `/blog/views.py`, in `BlogPostDetailView` you can find simple sessions implementation which counts how many times have user visited this page.
+Using debug toolbar you can see that after the first time it makes 1 less query every time because session is stored in cache as well as in the database.
+
 
 ### Multiple apps
 
@@ -122,6 +128,20 @@ There are 3 different apps other than `main`:
 
 
 ### Cache
+
+I decided to use Redis for caching.
+
+Caches settings:
+```
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.redis.RedisCache',
+        'LOCATION': 'redis://127.0.0.1:6379',
+    }
+}
+```
+
+In `testapp/urls.py` I cached `HomeView` with delayed request. For the first time it may take ~2 seconds but after that it'll load the page in several milliseconds.
 
 
 ### Complex database queries
