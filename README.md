@@ -110,6 +110,18 @@ As a result you can access `all_items_count` in templates.
 
 ### Signals
 
+In `accounts/signals.py` you can find 1 custom signal and 3 receivers.
+
+Signals:
+- `new_sign_up` - signal which is being sent when new user signs up.
+
+Receivers:
+- `create_profile` - Creates `UserProfile` and attaches it to newly created `CustomUser`.
+- `update_profile` - Updates `UserProfile` after related `CustomUser` has been saved.
+- `notify_new_sign_up` - Logs the fact that new user has signed up.
+
+Everything is covered with mock tests here in `accounts/tests/test_signals.py`.
+
 
 ### Sessions
 
