@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'django_extensions',
     # Our apps
-    'accounts',
+    # Here we use full path to config otherwise custom signals won't work
+    'accounts.apps.AccountsConfig',
     'testapp',
     'blog',
 ]

@@ -1,7 +1,12 @@
+import logging
+
 from accounts.models import CustomUser
 from blog.models import BlogPost
 from django.contrib.sessions.models import Session
 from django.test import TestCase, override_settings
+
+
+logging.disable(logging.CRITICAL)
 
 
 class SessionsTestCase(TestCase):

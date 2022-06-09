@@ -118,6 +118,8 @@ For sessions I used `django.contrib.sessions.backends.cached_db` session engine 
 In `/blog/views.py`, in `BlogPostDetailView` you can find simple sessions implementation which counts how many times have user visited this page.
 Using debug toolbar you can see that after the first time it makes 1 less query every time because session is stored in cache as well as in the database.
 
+In the tests session engine has been changed to `django.contrib.sessions.backends.db`.
+
 
 ### Multiple apps
 

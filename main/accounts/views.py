@@ -3,6 +3,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.views.generic.edit import CreateView
 
 from accounts.forms import CustomUserCreationForm
+from accounts import signals
 
 
 class AccountsLoginView(LoginView):
@@ -26,4 +27,6 @@ class AccountsSignupView(CreateView):
         username = form.cleaned_data.get('username')
         user = authenticate(username=username, password=raw_password)
         login(self.request, user)
+        # To avoid circular import error you should import signals, not actual new_sign_up
+        signals.new_sign_up.send(sender=self.__class__, new_user=user)
         return valid
