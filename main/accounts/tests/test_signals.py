@@ -5,7 +5,7 @@ from accounts.models import CustomUser, UserProfile
 from accounts.signals import new_sign_up
 from accounts.views import AccountsSignupView
 from django.db.models.signals import post_save
-from django.test import TestCase
+from django.test import TestCase, override_settings
 
 
 logging.disable(logging.CRITICAL)
@@ -13,6 +13,7 @@ logging.disable(logging.CRITICAL)
 
 class SignalsTestCase(TestCase):
 
+    @override_settings(CACHES={'default': {'BACKEND': 'django.core.cache.backends.dummy.DummyCache'}})
     @patch('accounts.signals.new_sign_up.send')
     def test_new_sign_up(self, mock):
         header = {"HTTP_USER_AGENT": ""}
@@ -37,6 +38,7 @@ class SignalReceiversTestCase(TestCase):
     # It won't work without autospec=True
     # autospec - All attributes of the mock will also have the spec of the corresponding
     # attribute of the object being replaced.
+    @override_settings(CACHES={'default': {'BACKEND': 'django.core.cache.backends.dummy.DummyCache'}})
     @patch('accounts.signals.update_profile', autospec=True)
     def test_create_profile(self, mock):
         post_save.connect(mock, sender=CustomUser, dispatch_uid='test_create_profile')
@@ -48,6 +50,7 @@ class SignalReceiversTestCase(TestCase):
         self.assertEqual(CustomUser.objects.count(), 2)
         self.assertEqual(UserProfile.objects.count(), 2)
 
+    @override_settings(CACHES={'default': {'BACKEND': 'django.core.cache.backends.dummy.DummyCache'}})
     @patch('accounts.signals.update_profile', autospec=True)
     def test_update_profile(self, mock):
         post_save.connect(mock, sender=CustomUser, dispatch_uid='test_update_profile')
@@ -60,6 +63,7 @@ class SignalReceiversTestCase(TestCase):
         self.assertEqual(CustomUser.objects.count(), 1)
         self.assertEqual(UserProfile.objects.count(), 1)
 
+    @override_settings(CACHES={'default': {'BACKEND': 'django.core.cache.backends.dummy.DummyCache'}})
     @patch('accounts.signals.notify_new_sign_up', autospec=True)
     def test_notify_new_sign_up(self, mock):
         new_sign_up.connect(mock, sender=AccountsSignupView)
