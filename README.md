@@ -19,6 +19,7 @@ The goal is to practice remained django features which never been used before.
     - [Complex database queries](#complex-database-queries)
     - [Localization](#localization)
     - [Timezone](#timezone)
+    - [CI](#ci)
   - [Fixtures](#fixtures)
   - [Author](#author)
 
@@ -166,6 +167,17 @@ In `testapp/urls.py` I cached `HomeView` with delayed request. For the first tim
 
 
 ### Timezone
+
+
+### CI
+
+- Go to `.github/workflows/CI.yml`
+
+On each commit or pull request there is 1 test job which uses postgres image to create db, and python env to install requirements and run all tests.
+
+To create proper conditions:
+- Some tests connected with cache use dummy cache
+- Before running the job we create `/main/logs/debug.log` file to test custom logger
 
 
 ## Fixtures
