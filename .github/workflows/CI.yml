@@ -37,5 +37,8 @@ jobs:
       - name: Run tests
         run: |
           cat .env.sample >> .env
-          cd main
+          mkdir -p main/main/logs
+          cd main/main/logs
+          touch debug.log
+          cd ../..
           python manage.py test
