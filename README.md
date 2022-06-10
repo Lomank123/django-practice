@@ -90,6 +90,7 @@ There are 4 custom middlewares:
 - `SetUserAgentMiddleware` - Adds attr to the request with meaningful info about user agent.
 - `BlockMobileMiddleware` - Blocks all incoming requests if they are from mobile browsers. Depends on `SetUserAgentMiddleware`.
 
+
 ### Logging
 
 There are 3 custom loggers:
