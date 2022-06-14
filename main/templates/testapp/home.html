@@ -8,38 +8,19 @@
 
 {% get_current_language as LANGUAGE_CODE %}
 
+  <h3>Home page</h3>
+  <hr />
+  <h4>Main objects</h4>
+  <hr />
 
 <!-- Cache example - caching result of method to get language code for 600 seconds -->
 {% with expiration_time=600 %}
   {% cache expiration_time welcome LANGUAGE_CODE %}
-    {% translate "Welcome to example.com" %}
+    {% translate "Cache example!" %}
   {% endcache %}
 {% endwith %}
 
-  <h1>Home page</h1>
-  <hr />
-  <h2>Main objects</h2>
-  <hr />
-
-  <h4>Categories</h4>
-  <div>
-    <ul>
-      {% for category in categories %}
-        <li><b>{{ category.name }}</b></li>
-      {% endfor %}
-    </ul>
-  </div>
-
-  <h4>Tags</h4>
-  <div>
-    <ul>
-      {% for tag in tags %}
-        <li><b>{{ tag.name }}</b></li>
-      {% endfor %}
-    </ul>
-  </div>
-
-  <h4>Items:</h4>
+  <h5>Items:</h5>
   <div>
     <ul>
       {% for item in items %}
@@ -56,17 +37,32 @@
           <p>Comments:
             {% for comment in item.comment_set.all %}
               <span>{{ comment.text }}</span>
+              <span>{{ comment.user.username }}</span>
             {% endfor %}
           </p>
-          <p>Published in: {{ item.creation_date }}</p>
-          <p>Last update: {{ item.last_update }}</p>
         </li>
       {% endfor %}
     </ul>
   </div>
 
-  <h2>Queries</h2>
+  <h4>Queries</h4>
   <hr />
-  {{ all_items_count }}
+  <h5>Recent comment items</h5>
+  <p>Shows whether item has comment within 1 day.</p>
+  <ul>
+    {% for item in recent_comment_items %}
+      {% if item.recent_comment %}
+        <li>Item {{ item.name }} <b>has</b> recent comment.</li>
+      {% else %}
+        <li>Item {{ item.name }} <b>doesn't have</b> recent comment.</li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+
+  <ul>
+    {% for comment in recent_comments %}
+      <li>{{ comment.text }}</li>
+    {% endfor %}
+  </ul>
 
 {% endblock content %}
