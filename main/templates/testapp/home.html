@@ -56,12 +56,41 @@
       {% else %}
         <li>Item {{ item.name }} <b>doesn't have</b> recent comment.</li>
       {% endif %}
+      {% empty %}
+        <li>No recent comments.</li>
     {% endfor %}
   </ul>
 
+  <h5>Aggregation</h5>
+
+  <p>Min amount: {{ min_max.min_amount }}</p>
+  <p>Max amount: {{ min_max.max_amount }}</p>
+  <p>Average amount: {{ avg.avg_amount }}</p>
+  <p>Max Avg diff amount: {{ max_avg_diff.amount_diff }}</p>
+
+  <h6>Categories with number of items</h6>
   <ul>
-    {% for comment in recent_comments %}
-      <li>{{ comment.text }}</li>
+    {% for category in categories_with_items_count %}
+      <li>Category | {{ category.name }} | has <b>{{ category.num_items }} item{{ category.num_items|pluralize }}</b></li>
+    {% endfor %}
+  </ul>
+
+  <h6>Categories with number of items above and below 20</h6>
+  <ul>
+    {% for category in above_below_20 %}
+      <li>
+        Category {{ category.name }} has <b>{{ category.above_20 }}</b> items with price above 20 and 
+        <b>{{ category.below_20 }}</b> items with price below 20
+      </li>
+    {% endfor %}
+  </ul>
+
+  <h6>Top 3 Categories by number of items</h6>
+  <ul>
+    {% for category in top_3_categories_by_item_count %}
+      <li>
+        Category {{ category.name }} has <b>{{ category.num_items }}</b> item{{ category.num_items|pluralize }}
+      </li>
     {% endfor %}
   </ul>
 

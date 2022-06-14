@@ -39,6 +39,8 @@ class Item(CustomBaseModel):
     name = models.CharField(max_length=120, verbose_name="Name")
     category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name="Category")
     tag = models.ManyToManyField(Tag, blank=True, verbose_name="Tag")
+    amount = models.IntegerField(default=0, verbose_name="Amount")
+    price = models.DecimalField(default=0.0, max_digits=7, decimal_places=2, verbose_name="Price")
 
     def __str__(self):
         return self.name
