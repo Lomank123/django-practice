@@ -162,6 +162,15 @@ In `testapp/urls.py` I cached `HomeView` with delayed request. For the first tim
 
 ### Complex database queries
 
+Open `testapp/repositories.py`; there are 4 repositories:
+
+- `ItemRepository`
+- `CategoryRepository`
+- `TagRepository`
+- `CommentRepository`
+
+Each of them contains different complex queries which is used in `HomeView` with the help of `testapp.services.HomeViewService`
+
 
 ### Localization
 
@@ -173,7 +182,7 @@ In `testapp/urls.py` I cached `HomeView` with delayed request. For the first tim
 
 - Go to `.github/workflows/CI.yml`
 
-On each commit or pull request there is 1 test job which uses postgres image to create db, and python env to install requirements and run all tests.
+On each commit or pull request there is 1 test job which uses `postgres` image to create db, and `python env` to install requirements and run all tests.
 
 To create proper conditions:
 - Some tests connected with cache use dummy cache
@@ -182,7 +191,15 @@ To create proper conditions:
 
 ## Fixtures
 
-Describe fixtures content and installation process here.
+To dump data:
+```
+python manage.py dumpdata testapp blog accounts --indent 2 > fixtures/dev.json
+```
+
+To load fixtures:
+```
+python manage.py loaddata fixtures/dev.json
+```
 
 
 ## Author

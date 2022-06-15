@@ -1,0 +1,216 @@
+[
+{
+  "model": "testapp.category",
+  "pk": 1,
+  "fields": {
+    "creation_date": "2022-06-12T04:06:30.005Z",
+    "last_update": "2022-06-12T04:06:30.005Z",
+    "name": "cat 1"
+  }
+},
+{
+  "model": "testapp.category",
+  "pk": 2,
+  "fields": {
+    "creation_date": "2022-06-12T04:06:32.796Z",
+    "last_update": "2022-06-12T04:06:32.796Z",
+    "name": "cat  2"
+  }
+},
+{
+  "model": "testapp.category",
+  "pk": 3,
+  "fields": {
+    "creation_date": "2022-06-14T16:43:48.992Z",
+    "last_update": "2022-06-14T16:43:48.992Z",
+    "name": "wqeqweqwe"
+  }
+},
+{
+  "model": "testapp.category",
+  "pk": 4,
+  "fields": {
+    "creation_date": "2022-06-14T16:43:52.300Z",
+    "last_update": "2022-06-14T16:43:52.300Z",
+    "name": "gdfdgdfgd"
+  }
+},
+{
+  "model": "testapp.tag",
+  "pk": 1,
+  "fields": {
+    "creation_date": "2022-06-12T04:06:17.016Z",
+    "last_update": "2022-06-12T04:06:17.016Z",
+    "name": "qwe"
+  }
+},
+{
+  "model": "testapp.tag",
+  "pk": 2,
+  "fields": {
+    "creation_date": "2022-06-12T04:06:20.558Z",
+    "last_update": "2022-06-12T04:06:20.558Z",
+    "name": "tert"
+  }
+},
+{
+  "model": "testapp.item",
+  "pk": 1,
+  "fields": {
+    "creation_date": "2022-06-12T04:06:43.493Z",
+    "last_update": "2022-06-14T15:32:44.404Z",
+    "name": "t 1",
+    "category": 1,
+    "amount": 198,
+    "price": "32.00",
+    "tag": [
+      2,
+      1
+    ]
+  }
+},
+{
+  "model": "testapp.item",
+  "pk": 2,
+  "fields": {
+    "creation_date": "2022-06-12T04:06:50.202Z",
+    "last_update": "2022-06-14T15:32:32.453Z",
+    "name": "t 2",
+    "category": 2,
+    "amount": 4,
+    "price": "4.50",
+    "tag": [
+      1
+    ]
+  }
+},
+{
+  "model": "testapp.item",
+  "pk": 3,
+  "fields": {
+    "creation_date": "2022-06-12T04:06:57.309Z",
+    "last_update": "2022-06-14T15:32:24.093Z",
+    "name": "t 3",
+    "category": 1,
+    "amount": 55,
+    "price": "31.50",
+    "tag": [
+      2,
+      1
+    ]
+  }
+},
+{
+  "model": "testapp.item",
+  "pk": 4,
+  "fields": {
+    "creation_date": "2022-06-12T04:07:05.067Z",
+    "last_update": "2022-06-14T15:32:13.942Z",
+    "name": "t4",
+    "category": 2,
+    "amount": 312,
+    "price": "12.42",
+    "tag": []
+  }
+},
+{
+  "model": "testapp.item",
+  "pk": 5,
+  "fields": {
+    "creation_date": "2022-06-14T16:08:56.871Z",
+    "last_update": "2022-06-14T16:08:56.871Z",
+    "name": "t 5",
+    "category": 2,
+    "amount": 41,
+    "price": "44.60",
+    "tag": [
+      2
+    ]
+  }
+},
+{
+  "model": "testapp.item",
+  "pk": 6,
+  "fields": {
+    "creation_date": "2022-06-14T16:44:39.383Z",
+    "last_update": "2022-06-14T16:44:39.383Z",
+    "name": "t 6",
+    "category": 3,
+    "amount": 31,
+    "price": "33.70",
+    "tag": [
+      1
+    ]
+  }
+},
+{
+  "model": "testapp.comment",
+  "pk": 3,
+  "fields": {
+    "creation_date": "2022-06-13T11:55:24.796Z",
+    "last_update": "2022-06-13T11:55:24.796Z",
+    "user": 1,
+    "item": 2,
+    "text": "gdfgdfgdf"
+  }
+},
+{
+  "model": "testapp.comment",
+  "pk": 4,
+  "fields": {
+    "creation_date": "2022-06-14T07:59:27.056Z",
+    "last_update": "2022-06-14T07:59:27.056Z",
+    "user": 1,
+    "item": 1,
+    "text": "qweqweqwe"
+  }
+},
+{
+  "model": "testapp.comment",
+  "pk": 5,
+  "fields": {
+    "creation_date": "2022-06-14T07:59:44.730Z",
+    "last_update": "2022-06-14T07:59:44.730Z",
+    "user": 1,
+    "item": 2,
+    "text": "eeee"
+  }
+},
+{
+  "model": "testapp.comment",
+  "pk": 6,
+  "fields": {
+    "creation_date": "2022-06-14T16:11:05.555Z",
+    "last_update": "2022-06-14T16:11:05.555Z",
+    "user": 1,
+    "item": 5,
+    "text": "qwqweqwe"
+  }
+},
+{
+  "model": "accounts.customuser",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$320000$Gf7XiNi1A5jBofJWXhauR0$ywDFqD0MzxKgYgsmeUZSmiy1WO+g5TOeRWURoBw7/kU=",
+    "last_login": "2022-06-14T07:59:12.846Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "qweqweqwe",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2022-06-09T11:13:00Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.userprofile",
+  "pk": 1,
+  "fields": {
+    "user": 1,
+    "about": "asdasdasd"
+  }
+}
+]
